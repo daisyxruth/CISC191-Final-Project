@@ -15,44 +15,37 @@
 *
 * <<Add more references here>>
 *
-* Version: 2026-05-05
+* Version: 2026-05-06
 */
 package models;
 
 /**
- * Purpose: The reponsibility of GoodCat is ...
+ * Purpose: The reponsibility of EvilCat is ...
  *
- * GoodCat is-a ...
- * GoodCat is ...
+ * EvilCat is-a ...
+ * EvilCat is ...
  */
-public class GoodCat extends Cat
+public class EvilCat extends Cat
 {
-	
-	private String goodLuckMessage;
+private String evilCatMessage;
 	
 	enum Types 
 	{
-		SLEEPY_CAT,
-		PRETTY_CAT,
-		SHY_CAT,
+		IRIS_CAT,
+		ANGRY_CAT,
+		HUNGRY_CAT,
 	}
 	
-	public GoodCat()
+	public EvilCat()
 	{
-		super(); 
-		goodLuckMessage = "depends on the cat";
+		super();
+		evilCatMessage = "This evil cat says, \"You must solve this riddle to continue!\""; 
 	}
 	
-	public GoodCat(String name, String newMessage)
+	public EvilCat(String name, String newMessage)
 	{
 		super(name);
-		goodLuckMessage = newMessage;
-	}
-	
-	public String getGoodLuckMessage()
-	{
-		return goodLuckMessage; 
+		evilCatMessage = newMessage;
 	}
 
-	
 }

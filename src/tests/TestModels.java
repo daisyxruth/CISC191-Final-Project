@@ -15,44 +15,34 @@
 *
 * <<Add more references here>>
 *
-* Version: 2026-05-05
+* Version: 2026-05-06
 */
-package models;
+package tests;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.Test;
+
+import models.GoodCat;
 
 /**
- * Purpose: The reponsibility of GoodCat is ...
+ * Purpose: The reponsibility of TestModels is ...
  *
- * GoodCat is-a ...
- * GoodCat is ...
+ * TestModels is-a ...
+ * TestModels is ...
  */
-public class GoodCat extends Cat
+class TestModels
 {
+
+	// 1. Anticipate any behaviors
+	// 2. Write your code with certain use cases
 	
-	private String goodLuckMessage;
-	
-	enum Types 
+	@Test
+	void test()
 	{
-		SLEEPY_CAT,
-		PRETTY_CAT,
-		SHY_CAT,
-	}
-	
-	public GoodCat()
-	{
-		super(); 
-		goodLuckMessage = "depends on the cat";
-	}
-	
-	public GoodCat(String name, String newMessage)
-	{
-		super(name);
-		goodLuckMessage = newMessage;
-	}
-	
-	public String getGoodLuckMessage()
-	{
-		return goodLuckMessage; 
+		GoodCat newCat = new GoodCat();
+		assertEquals(newCat.getGoodLuckMessage(), "depends on the cat");
+		
 	}
 
-	
 }

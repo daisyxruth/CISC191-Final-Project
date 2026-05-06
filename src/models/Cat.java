@@ -39,8 +39,12 @@ public abstract class Cat
 	
 	public Cat(String newName)
 	{
-		this();
 		name = newName;
+	}
+	
+	public String getName()
+	{
+		return name; 
 	}
 	
 	
