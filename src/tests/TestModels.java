@@ -23,10 +23,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
+import models.Cat;
+import models.CatFactory;
 import models.GoodCat;
 
 /**
- * Purpose: The reponsibility of TestModels is ...
+ * Purpose: The reponsibility of TestModels is 
  *
  * TestModels is-a ...
  * TestModels is ...
@@ -42,6 +44,9 @@ class TestModels
 	{
 		GoodCat newCat = new GoodCat();
 		assertEquals(newCat.getGoodLuckMessage(), "depends on the cat");
+		Cat testCat = CatFactory.getRandomCat();
+		System.out.println(testCat.toString());
+
 		
 	}
 

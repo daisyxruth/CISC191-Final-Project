@@ -43,14 +43,13 @@ public class CatFactory
 		{
 			case 0:
 				GoodTypes goodCatType = determineGoodCatType(catTypeNumber);
-				//GoodCat.Types goodCatType = determineGoodCatType(catTypeNumber);
 				return fromGoodCatType(goodCatType);
 				
 			case 1:
 				// 2. get the actual cat type from the number
 				EvilTypes evilCatType = determineEvilCatType(catTypeNumber);
 				
-				// 3. call from evil cat type with the type
+				// 3. call from evil cat type with the type 
 				return fromEvilCatType(evilCatType);
 				
 				default:
@@ -69,8 +68,7 @@ public class CatFactory
 				return new GoodCat("Pretty Cat", 
 						"This charming cat wishes you good luck!"); 
 			case SHY_CAT:
-				return new GoodCat("Shy Cat", 
-						"I've got your back... from over here..."); 				
+				return new GoodCat("Shy Cat", "I've got your back... from over here..."); 				
 				
 				default:
 					return null;
@@ -96,15 +94,15 @@ public class CatFactory
 	
 	public static GoodCat.GoodTypes determineGoodCatType(int selection)
 	{
-		switch(selection)
+		switch(selection) 
 		{
-			case 1:
+			case 0:
 				return GoodCat.GoodTypes.SLEEPY_CAT;
 				
-			case 2: 
+			case 1: 
 				return GoodCat.GoodTypes.PRETTY_CAT;
 				
-			case 3: 
+			case 2: 
 				return GoodCat.GoodTypes.SHY_CAT;
 				
 			default:

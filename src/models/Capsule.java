@@ -2,22 +2,19 @@
 * Lead Author(s):
 * @author daisygarcia; student ID
 * @author Full name; student ID
-* <<Add additional lead authors here>>
 *
 * Other Contributors:
-* Full name; student ID or contact information if not in class
-* <<Add additional contributors (mentors, tutors, friends) here, with contact information>>
 *
 * References:
 * Morelli, R., & Walde, R. (2016).
 * Java, Java, Java: Object-Oriented Problem Solving
 * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
 *
-* <<Add more references here>>
 *
 * Version: 2026-05-05
 */
 package models;
+
 
 /**
  * Purpose: The reponsibility of Capsule is ...
@@ -28,11 +25,17 @@ package models;
 public class Capsule
 {
 	
-	private GoodCat capsuleCat;
+	private Cat capsuleCat;
 	
-	public Capsule(GoodCat newCat)
+	public Capsule()
 	{
-		capsuleCat = newCat;
+		capsuleCat = CatFactory.getRandomCat(); 
 	}
+	
+	public Cat getCapsule()
+	{
+		return capsuleCat;
+	}
+	
 
 }

@@ -27,7 +27,7 @@ package models;
  */
 public class GoodCat extends Cat
 {
-	
+	private String name;
 	private String goodLuckMessage;
 	
 	enum GoodTypes 
@@ -46,14 +46,28 @@ public class GoodCat extends Cat
 	
 	public GoodCat(String name, String newMessage)
 	{
-		super(name);
+		this.name = name;
 		goodLuckMessage = newMessage;
 	}
+	
 	
 	public String getGoodLuckMessage()
 	{
 		return goodLuckMessage; 
 	}
 
+	@Override
+	public String toString()
+	{
+		return name + ": " + getGoodLuckMessage();
+	}
+
+	@Override
+	public Morality getMorality()
+	{
+		return Morality.GOOD;
+	}
+	
+	
 	
 }

@@ -27,6 +27,7 @@ package models;
  */
 public class EvilCat extends Cat
 {
+	private String name;
 	private String evilCatMessage;
 	
 	enum EvilTypes 
@@ -44,12 +45,24 @@ public class EvilCat extends Cat
 	
 	public EvilCat(String name)
 	{
-		super(name);
+		this.name = name;
 		evilCatMessage = "This evil cat says, \"You must solve this riddle to continue!\"";
 	}
 
 	public String getEvilCatMessage()
 	{
 		return evilCatMessage;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return name + ": " + getEvilCatMessage();
+	}
+
+	@Override
+	public Morality getMorality()
+	{
+		return Morality.EVIL;
 	}
 }
