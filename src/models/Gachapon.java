@@ -16,8 +16,9 @@
 */
 package models;
 
-import java.util.LinkedList;
+import java.util.LinkedList; 
 import java.util.Queue;
+
 
 /**
  * Purpose: The reponsibility of Gachapon is to hold the capsules/ 
@@ -38,5 +39,6 @@ public class Gachapon
 	{
 		capsulesToPull.add(capsule); 
 	}
+
 
 }
