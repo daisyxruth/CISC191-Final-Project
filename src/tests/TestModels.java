@@ -19,12 +19,16 @@
 */
 package tests;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.*; 
+
 
 import org.junit.jupiter.api.Test;
 
+//import models.Capsule;
 import models.Cat;
+import models.Cat.Morality;
 import models.CatFactory;
+import models.Gachapon;
 import models.GoodCat;
 
 /**
@@ -44,9 +48,26 @@ class TestModels
 	{
 		GoodCat newCat = new GoodCat();
 		assertEquals(newCat.getGoodLuckMessage(), "depends on the cat");
-		Cat testCat = CatFactory.getRandomCat();
-		System.out.println(testCat.toString());
+//		Cat testCat = CatFactory.getRandomCat();
+//		System.out.println(testCat.toString());
 
+		Gachapon model = new Gachapon();
+		model.fillGachapon();
+		Cat testerCat = model.drawCat(); 
+		
+		
+//		Morality myVar = testerCat.getMorality(); 
+//		
+//		switch(myVar)
+//		{
+//			case GOOD:
+//				//System.out.println(testerCat.)
+//		}
+		
+		System.out.println(testerCat.toString());
+		
+		System.out.println(testerCat.getName());
+				
 		
 	}
 

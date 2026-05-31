@@ -28,17 +28,27 @@ import java.util.Queue;
  */
 public class Gachapon
 {
-	private Queue<Capsule> capsulesToPull;
+	private Queue<Cat> capsulesToPull;
 
 	public Gachapon()
 	{
 		capsulesToPull = new LinkedList<>();
 	}
 	
-	public void fillGachapon(Capsule capsule)
+	public void fillGachapon()
 	{
-		capsulesToPull.add(capsule); 
+		
+		for (int i = 0; i < 10; ++i)
+		{
+			capsulesToPull.add(CatFactory.getRandomCat()); 			
+		}
 	}
 
+	public Cat drawCat()
+	{
+		Cat catToDraw = capsulesToPull.remove();
+		
+		return catToDraw;
+	}
 
 }

@@ -21,6 +21,7 @@ package models;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -60,6 +61,8 @@ public class GachaponView extends JFrame
 		setVisible(true);
 		
 		gachaponPicture = new JPanel();
+		gachaponPicture.setSize(new Dimension(400,400));
+		gachaponPicture.setBackground(new Color(202, 212, 231));
 		JLabel temporaryPicture = new JLabel("Gacha picture will go here.");
 		gachaponPicture.add(temporaryPicture);
 		this.add(gachaponPicture, BorderLayout.WEST);

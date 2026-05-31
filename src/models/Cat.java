@@ -30,7 +30,7 @@ public abstract class Cat
 	private String name; //a cat has-a name
 	//a cat has a picture
 	//a cat is good or evil
-	enum Morality
+	public enum Morality
 	{
 		GOOD,
 		EVIL
@@ -47,12 +47,24 @@ public abstract class Cat
 		name = newName;
 	}
 	
+//	public String setName()
+//	{
+//		
+//	}
+	
 	public String getName()
 	{
 		return name; 
 	}
 	
 	public abstract Morality getMorality();
+
+
+	public void setName(String newName)
+	{
+		this.name = newName;
+		
+	}
 
 	
 
