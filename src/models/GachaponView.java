@@ -53,7 +53,7 @@ public class GachaponView extends JFrame
     private static final Color BORDER_BLUE = new Color(100, 120, 200);
     private static final Color SLOT_EMPTY  = new Color(200, 205, 230);
     
-    // GUI arrays (array usage)
+    // GUI arrays 
     private JPanel[] slotPanels      = new JPanel[NUM_SLOTS];
     private JLabel[] catNameLabels   = new JLabel[NUM_SLOTS];
 
@@ -66,7 +66,7 @@ public class GachaponView extends JFrame
 	private static final long serialVersionUID = -4451436345941333262L;
 	
 	
-	public GachaponView(Gachapon model)
+	public GachaponView(Gachapon gachapon)
 	{
 //		this.model = model; 
 		
