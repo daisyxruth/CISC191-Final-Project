@@ -19,7 +19,7 @@
 */
 package models;
 
-import java.awt.BasicStroke;
+import java.awt.BasicStroke; 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -29,6 +29,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.GridLayout;
 import java.awt.RenderingHints;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -36,8 +37,12 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
+
+
 
 /**
  * Purpose: The reponsibility of GachaponView is ...
@@ -45,13 +50,13 @@ import javax.swing.SwingConstants;
  * GachaponView is-a ...
  * GachaponView is ...
  */
-public class GachaponView extends JFrame
+public class GachaponView extends JFrame 
 {
 	
 	private static final int   NUM_SLOTS   = 3;
     private static final Color BG          = new Color(235, 238, 255);
     private static final Color BORDER_BLUE = new Color(100, 120, 200);
-    private static final Color SLOT_EMPTY  = new Color(200, 205, 230);
+    private static final Color SLOT_EMPTY  = new Color(200, 205, 230); 
     
     // GUI arrays 
     private JPanel[] slotPanels      = new JPanel[NUM_SLOTS];
@@ -59,6 +64,9 @@ public class GachaponView extends JFrame
 
     private JButton drawButton;
     private JLabel  statusLabel;
+    
+    private Gachapon model = new Gachapon();
+    private DrawHistory drawHistory;
 	
 	/**
 	 * GachaponView.java has-a/has-many serialVersionUID
@@ -68,9 +76,8 @@ public class GachaponView extends JFrame
 	
 	public GachaponView(Gachapon gachapon)
 	{
-//		this.model = model; 
+		model.fillGachapon(); 
 		
-//		setTitle("Lucky Cat Gacha");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
@@ -102,8 +109,6 @@ public class GachaponView extends JFrame
         setMinimumSize(new Dimension(620, 400));
         setLocationRelativeTo(null);
         setVisible(true);
-		
-		
 	}
 	
     // Painted gacha machine panel. 
@@ -174,7 +179,7 @@ public class GachaponView extends JFrame
         drawButton.setBackground(new Color(180, 190, 220));
         drawButton.setFocusPainted(false);
         drawButton.setAlignmentX(Component.CENTER_ALIGNMENT);
- //       drawButton.addActionListener(e -> onDraw());
+        drawButton.addActionListener(e -> onDraw());
 
         statusLabel = new JLabel(" ");
         statusLabel.setFont(new Font("Monospaced", Font.PLAIN, 11));
@@ -191,8 +196,9 @@ public class GachaponView extends JFrame
         return title;
     }
     
-    /** Wrapper: name label on top, coloured slot panel below. */
-    private JPanel buildSlotWrapper(int i) {
+    // Wrapper: name label on top, coloured slot panel below. 
+    private JPanel buildSlotWrapper(int i) 
+    {
         JPanel wrapper = new JPanel();
         wrapper.setLayout(new BoxLayout(wrapper, BoxLayout.Y_AXIS));
         wrapper.setBackground(BG);
@@ -210,6 +216,81 @@ public class GachaponView extends JFrame
         wrapper.add(Box.createVerticalStrut(3));
         wrapper.add(slotPanels[i]);
         return wrapper;
+    }
+    
+    // Draw logic
+    private void onDraw() 
+    {
+        drawButton.setEnabled(false);
+
+        // Draw 3 cats into an array 
+        Cat[] drawn = new Cat[NUM_SLOTS];
+        try {
+            for (int i = 0; i < NUM_SLOTS; i++) 
+            {
+                drawn[i] = model.drawCat();
+            }
+        }
+        catch (Exception e) 
+        {
+            JOptionPane.showMessageDialog(this,
+                "Draw error: " + e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+            drawButton.setEnabled(true);
+            return;
+        }
+
+        drawHistory.push(drawn);
+
+        // Reset all slots first
+        for (int i = 0; i < NUM_SLOTS; i++) resetSlot(i);
+
+        // Reveal slots one at a time with a short delay (animation feel)
+        Timer timer = new Timer(400, null);
+        final int[] newSlot = {0};
+        timer.addActionListener(e -> {
+            if (newSlot[0] < NUM_SLOTS) 
+            {
+                revealSlot(newSlot[0], drawn[newSlot[0]]);
+                newSlot[0]++;
+            } 
+            else 
+            {
+                timer.stop();
+                drawButton.setEnabled(true);
+                statusLabel.setText("Total draws: " + drawHistory.size());
+            }
+        });
+        timer.start();
+    }
+
+    private void revealSlot(int i, Cat cat) 
+    {
+        catNameLabels[i].setText(cat.getName());
+
+        JPanel slot = slotPanels[i];
+        slot.removeAll();
+
+        JLabel descLbl = new JLabel(
+            "<html><center><i>" + cat.getName() + "</i></center></html>",
+            SwingConstants.CENTER);
+        descLbl.setFont(new Font("Monospaced", Font.PLAIN, 9));
+        descLbl.setForeground(new Color(40, 40, 90));
+        descLbl.setBorder(BorderFactory.createEmptyBorder(0, 4, 4, 4));
+
+        slot.add(descLbl,   BorderLayout.SOUTH);
+        slot.revalidate();
+        slot.repaint();
+    }
+    
+    private void resetSlot(int i) 
+    {
+        catNameLabels[i].setText(" ");
+        JPanel slot = slotPanels[i];
+        slot.removeAll();
+        slot.setBackground(SLOT_EMPTY);
+        slot.setLayout(new BorderLayout());
+        slot.revalidate();
+        slot.repaint();
     }
 	
 	public static void main(String[] args)

@@ -20,13 +20,10 @@ import java.util.Random;
 import models.EvilCat.EvilTypes;
 import models.GoodCat.GoodTypes;
 
-//import models.EvilCat.Types;
 
 /**
- * Purpose: The reponsibility of CatFactory is ...
- *
- * CatFactory is-a ...
- * CatFactory is ...
+ * Purpose: The reponsibility of CatFactory is to provide 
+ * the different Cat Types
  */
 public class CatFactory
 {

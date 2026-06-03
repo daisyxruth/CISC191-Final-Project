@@ -23,8 +23,6 @@ import java.util.Queue;
 /**
  * Purpose: The reponsibility of Gachapon is to hold the capsules/ 
  * fill the "machine" with the capsules that will be pulled by the player
- * 
- *
  */
 public class Gachapon
 {

@@ -1,34 +1,31 @@
 /**
 * Lead Author(s):
 * @author daisygarcia; student ID
-* @author Full name; student ID
-* <<Add additional lead authors here>>
+* @author monix williams-garcia; student ID
 *
 * Other Contributors:
-* Full name; student ID or contact information if not in class
-* <<Add additional contributors (mentors, tutors, friends) here, with contact information>>
+* alex chow; achow@sdccd.edu
 *
 * References:
 * Morelli, R., & Walde, R. (2016).
 * Java, Java, Java: Object-Oriented Problem Solving
 * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
 *
-* <<Add more references here>>
 *
 * Version: 2026-04-30
 */
 package models;
 
 /**
- * Purpose: The reponsibility of Cat is ...
+ * Purpose: The reponsibility of Cat is to act as a parent
+ * class to GoodCat and EvilCat
  *
- * Cat is-a ...
- * Cat is ...
  */
 public abstract class Cat
 {
 	private String name; //a cat has-a name
 	//a cat has a picture
+	
 	//a cat is good or evil
 	public enum Morality
 	{
@@ -47,10 +44,6 @@ public abstract class Cat
 		name = newName;
 	}
 	
-//	public String setName()
-//	{
-//		
-//	}
 	
 	public String getName()
 	{

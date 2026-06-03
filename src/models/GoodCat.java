@@ -1,29 +1,24 @@
 /**
 * Lead Author(s):
 * @author daisygarcia; student ID
-* @author Full name; student ID
-* <<Add additional lead authors here>>
+* @author monix williams-garcia; student ID
 *
-* Other Contributors:
-* Full name; student ID or contact information if not in class
-* <<Add additional contributors (mentors, tutors, friends) here, with contact information>>
 *
 * References:
 * Morelli, R., & Walde, R. (2016).
 * Java, Java, Java: Object-Oriented Problem Solving
 * https://open.umn.edu/opentextbooks/textbooks/java-java-java-object-oriented-problem-solving
 *
-* <<Add more references here>>
 *
 * Version: 2026-05-05
 */
 package models;
 
 /**
- * Purpose: The reponsibility of GoodCat is ...
+ * Purpose: The reponsibility of GoodCat is to outline the bahaviors
+ * of Cats that can grant good luck on draws
  *
- * GoodCat is-a ...
- * GoodCat is ...
+ * GoodCat is-a Cat
  */
 public class GoodCat extends Cat
 {
